@@ -2,7 +2,7 @@ import "../components/Search.css";
 import Paper from "@mui/material/Paper";
 import { useState } from "react";
 
-const Search = () => {
+const Search = ({ extractLocation }) => {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [iconToggle, setIconToggle] = useState(true);
@@ -39,6 +39,8 @@ const Search = () => {
     setQuery(value.address);
     setSearchResults([]);
     setPlaceId(value.id);
+
+    extractLocation(value);
   };
 
   return (
