@@ -1,7 +1,13 @@
 import "../components/Maps.css";
-import Map from "react-map-gl";
+import Map, { Marker } from "react-map-gl";
+import { useEffect } from "react";
 
 const Maps = ({ place }) => {
+  useEffect(() => {
+    console.log(place.longitude);
+    console.log(place.latitude);
+  }, [place.longitude, place.latitude]);
+
   return (
     <Map
       className="maps"
@@ -12,7 +18,14 @@ const Maps = ({ place }) => {
         zoom: 14,
       }}
       mapStyle="mapbox://styles/nhossen208/cl15wl504000p14nzajdwfbvg"
-    />
+    >
+      <Marker longitude={90.498587204924} latitude={23.727969481625}>
+        <i
+          className="fas fa-map-marker-alt"
+          style={{ width: 150, height: 150 }}
+        ></i>
+      </Marker>
+    </Map>
   );
 };
 
