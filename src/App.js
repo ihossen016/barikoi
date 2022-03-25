@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <Search extractLocation={getLocation} />
-      <Maps />
+      <Maps place={place} />
     </div>
   );
 }
