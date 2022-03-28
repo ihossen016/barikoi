@@ -9,6 +9,7 @@ const Search = ({ extractLocation }) => {
   const [select, setSelect] = useState({});
   const [placeId, setPlaceId] = useState(null);
 
+  // Search Function
   const handleChange = e => {
     e.preventDefault();
     setQuery(e.target.value);
@@ -27,6 +28,7 @@ const Search = ({ extractLocation }) => {
       });
   };
 
+  // Clear Searchbar Function
   const handleClose = () => {
     setQuery("");
     setIconToggle(true);
@@ -34,12 +36,14 @@ const Search = ({ extractLocation }) => {
     setPlaceId(null);
   };
 
+  // Select Specific Item Function
   const handleSelect = value => {
     setSelect(value);
     setQuery(value.address);
     setSearchResults([]);
     setPlaceId(value.id);
 
+    // Passing Selected Location to App Component
     extractLocation(value);
   };
 
@@ -49,6 +53,7 @@ const Search = ({ extractLocation }) => {
         Bari<span className="title">Koi</span>
       </h2>
 
+      {/* Search Box Section */}
       <Paper className="paper" elevation={3}>
         <div className="search-box">
           <input
@@ -60,6 +65,7 @@ const Search = ({ extractLocation }) => {
           />
         </div>
 
+        {/* Toggling Icons based on iconToggle State */}
         <div className="icon-box">
           {iconToggle && (
             <div className="search-icon">
@@ -74,11 +80,13 @@ const Search = ({ extractLocation }) => {
         </div>
       </Paper>
 
+      {/* Search List Section */}
       <Paper
         style={{ maxHeight: 400, overflow: "auto" }}
         className="results"
         elevation={3}
       >
+        {/* Show Search Results if there is any */}
         {searchResults && (
           <ul>
             {searchResults.map(place => (
@@ -99,6 +107,7 @@ const Search = ({ extractLocation }) => {
         )}
       </Paper>
 
+      {/* Show Details of the Selected Result */}
       {placeId && (
         <Paper elevation={0} className="details">
           <h3>{select.address}</h3>

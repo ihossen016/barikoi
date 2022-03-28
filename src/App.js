@@ -6,11 +6,10 @@ import { useState } from "react";
 function App() {
   const [place, setPlace] = useState({});
 
+  // Getting Location Data from Search Component
   const getLocation = location => {
     setPlace(location);
   };
-
-  console.log(place);
 
   return (
     <div className="App">
